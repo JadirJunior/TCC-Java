@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="519.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prjtcc.Controllers.CadastroController">
+    <stylesheets>
+        <URL value="@/prjtcc/styles/styles.css" />
+    </stylesheets>
+   <children>
+      <BorderPane prefHeight="680.0" prefWidth="519.0">
+         <top>
+            <Pane prefHeight="224.0" prefWidth="519.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="160.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/Logo1.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="37.0" layoutY="165.0" style="-fx-background-color: #fff; -fx-font-size: 30;" text="CADASTRAR" />
+                  <Button fx:id="btnClose" layoutX="474.0" layoutY="5.0" mnemonicParsing="false" onAction="#btnClose" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <FontAwesomeIconView fill="#c86ee7" glyphName="CLOSE" size="17" />
+                     </graphic>
+                  </Button>
+               </children>
+            </Pane>
+         </top>
+         <center>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField id="text-field" fx:id="txtUsuario" layoutX="112.0" layoutY="61.0" prefHeight="38.0" prefWidth="293.0" promptText="Usuário" style="-fx-font-family: Montserrat;" stylesheets="@styles/styles.css">
+                     <styleClass>
+                        <String fx:value="text-field" />
+                        <String fx:value="text-field" />
+                     </styleClass>
+                  </TextField>
+                  <PasswordField fx:id="txtSenha" layoutX="110.0" layoutY="121.0" prefHeight="40.0" prefWidth="295.0" promptText="Senha" style="-fx-font-family: Montserrat;" />
+                  <Button fx:id="btnCadastrar" layoutX="152.0" layoutY="287.0" mnemonicParsing="false" onAction="#cadastrarUsuario" prefHeight="36.0" prefWidth="212.0" stylesheets="@styles/styles.css" text="CADASTRAR" />
+                  <Hyperlink fx:id="btnVoltar" layoutX="235.0" layoutY="333.0" style="-fx-font-size: 15;" stylesheets="@styles/styles.css" text="Voltar" />
+                  <PasswordField fx:id="txtSenhaConf" layoutX="110.0" layoutY="188.0" prefHeight="40.0" prefWidth="295.0" promptText="Confirmar Senha" style="-fx-font-family: Montserrat;" />
+               </children>
+            </Pane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
