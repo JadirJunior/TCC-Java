@@ -1,0 +1,26 @@
+.button {
+-fx-background-color: #C86EE7;
+-fx-text-fill: #fff;
+-fx-background-radius: 16px;
+}
+
+.button:hover {
+    -fx-opacity: 0.6;
+    -fx-cursor: hand;
+}
+
+.hyperlink {
+    -fx-text-fill:#C86EE7;
+}
+
+#text-field {
+    -fx-border-radius: 20; 
+}
+
+.buttonTransparent {
+    -fx-background-color: transparent;
+}
+
+.buttonTransparent:hover {
+    -fx-background-color: #f2f2f2;
+}
