@@ -64,8 +64,6 @@ public class CadastroController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        new ZoomIn(anchPane).play();
-        stack.toBack();
         btnVoltar.setOnMousePressed((event) -> {
             
             PrjTCC.changeScreen("login");
