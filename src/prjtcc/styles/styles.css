@@ -1,0 +1,66 @@
+.button {
+-fx-background-color: #C86EE7;
+-fx-text-fill: #fff;
+-fx-background-radius: 20px;
+}
+
+.button:hover {
+    -fx-opacity: 0.6;
+    -fx-cursor: hand;
+}
+
+.hyperlink {
+    -fx-text-fill:#C86EE7;
+}
+
+#text-field {
+    -fx-border-radius: 20; 
+}
+
+.buttonTransparent {
+    -fx-background-color: transparent;
+}
+
+.buttonTransparent:hover {
+    -fx-background-color: #f2f2f2;
+}
+
+.choice-box > * {
+    -fx-background-color: #C86EE7;
+}
+
+.choice-box .context-menu {
+    -fx-background-color: #C86EE7;
+}
+
+.choice-box {
+    -fx-background-color: #C86EE7;
+    -fx-mark-color: white;
+}
+
+.choice-box > .label {
+    -fx-text-fill: white;
+}
+
+.chart-legend-item {
+    -fx-text-fill: #7159c1;
+}
+
+.default-color0.chart-series-area-fill { 
+    -fx-fill: #C86EE7; 
+    -fx-opacity: 0.7
+}
+
+.default-color0.chart-series-area-line { 
+    -fx-stroke: #C86EE7;
+}
+
+.default-color0.chart-area-symbol { 
+    -fx-background-color: #C86EE7, #C86EE7; 
+}
+
+.chart-alternative-row-fill {
+    -fx-fill: #fff;
+    -fx-stroke: transparent;
+    -fx-stroke-width: 0;
+}
