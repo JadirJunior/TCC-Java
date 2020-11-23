@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prjtcc.Controllers.PrincipalController">
+   <children>
+      <Line endX="-100.0" endY="465.0" layoutX="296.0" layoutY="134.0" startX="-101.0" startY="-135.0" stroke="#e4cbcb" />
+      <Pane layoutY="-2.0" prefHeight="601.0" prefWidth="200.0">
+         <children>
+            <Pane layoutX="7.0" prefHeight="135.0" prefWidth="187.0" stylesheets="@styles/styles.css">
+               <children>
+                  <ImageView fitHeight="109.0" fitWidth="162.0" layoutX="44.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
+                     <image>
+                        <Image url="@assets/Logo2.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </Pane>
+            <VBox alignment="CENTER" layoutX="7.0" layoutY="141.0" prefHeight="460.0" prefWidth="187.0">
+               <children>
+                  <Button fx:id="btnProdutosVendidos" mnemonicParsing="false" onAction="#ProdutosVendidosClick" prefHeight="74.0" prefWidth="96.0" styleClass="buttonTransparent" stylesheets="@styles/styles.css">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="BAR_CHART_ALT" size="20" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnUsuariosNovos" mnemonicParsing="false" onAction="#ChartUsuariosNovos" prefHeight="74.0" prefWidth="96.0" styleClass="buttonTransparent" stylesheets="@styles/styles.css">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="AREA_CHART" size="20" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnProdutosAdicionados" mnemonicParsing="false" onAction="#ChartProdutosAdicionados" prefHeight="74.0" prefWidth="96.0" styleClass="buttonTransparent" stylesheets="@styles/styles.css">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="PIE_CHART" size="20" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnAcessos" mnemonicParsing="false" onAction="#AcessosClick" prefHeight="74.0" prefWidth="96.0" styleClass="buttonTransparent" stylesheets="@styles/styles.css">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="LINE_CHART" size="20" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnEditUser" mnemonicParsing="false" onAction="#handleClickUser" prefHeight="74.0" prefWidth="96.0" styleClass="buttonTransparent" stylesheets="@styles/styles.css">
+                     <graphic>
+                        <FontAwesomeIconView glyphName="GROUP" size="20" />
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+      <Pane layoutX="195.0" prefHeight="98.0" prefWidth="604.0">
+         <children>
+            <Button fx:id="btnUser" layoutX="390.0" layoutY="20.0" mnemonicParsing="false" onAction="#btnUserClick" prefHeight="47.0" prefWidth="59.0" styleClass="buttonTransparent" stylesheets="@styles/styles.css">
+               <graphic>
+                  <ImageView fx:id="imageUser" fitHeight="60.0" fitWidth="68.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/Logo2.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label fx:id="lblNomeUsuario" alignment="CENTER_RIGHT" layoutX="503.0" layoutY="41.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></Label>
+            <Button layoutX="76.0" layoutY="32.0" mnemonicParsing="false" onAction="#onLoggout" prefHeight="44.0" prefWidth="64.0" styleClass="buttonTransparent" stylesheets="@styles/styles.css">
+               <graphic>
+                  <FontAwesomeIconView fill="#867777" glyphName="ARROW_LEFT" size="22" />
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+      <Line endX="340.0" endY="115.0" layoutX="459.0" layoutY="-19.0" startX="-264.0" startY="115.0" stroke="#e4cbcb" />
+      <Pane fx:id="Container" layoutX="194.0" layoutY="98.0" prefHeight="502.0" prefWidth="605.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="194.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="98.0">
+         <children>
+            <AnchorPane id="AnchorPane" fx:id="Account" layoutX="6.0" prefHeight="290.0" prefWidth="593.0" style="-fx-background-color: #fff;">
+               <children>
+                  <TextField fx:id="txtUsuario" layoutX="97.0" layoutY="177.0" prefHeight="25.0" prefWidth="188.0" promptText="Usuário" AnchorPane.bottomAnchor="300.0" AnchorPane.leftAnchor="97.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="177.0" />
+                  <TextField fx:id="txtSenha" layoutX="97.0" layoutY="224.0" prefHeight="25.0" prefWidth="188.0" promptText="Senha" AnchorPane.bottomAnchor="253.0" AnchorPane.leftAnchor="97.0" AnchorPane.rightAnchor="320.0" AnchorPane.topAnchor="224.0" />
+                  <Pane layoutX="334.0" layoutY="68.0" prefHeight="181.0" prefWidth="241.0" style="-fx-border-color: #000;">
+                     <children>
+                        <ImageView fx:id="imageUpdate" fitHeight="150.0" fitWidth="200.0" layoutX="21.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Pane>
+                  <Button fx:id="btnDialog" layoutX="331.0" layoutY="258.0" mnemonicParsing="false" onAction="#changeImage" prefHeight="25.0" prefWidth="123.0" stylesheets="@styles/styles.css" text="Selecionar imagem" />
+                  <Button fx:id="btnUpdate" layoutX="97.0" layoutY="387.0" mnemonicParsing="false" onAction="#updateUser" prefHeight="25.0" prefWidth="123.0" stylesheets="@styles/styles.css" text="Atualizar dados" />
+                  <StackPane fx:id="stack" prefHeight="502.0" prefWidth="604.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="PanelChartAcessos" prefHeight="502.0" prefWidth="604.0">
+               <children>
+                  <ChoiceBox fx:id="choiceBox" layoutX="14.0" layoutY="95.0" prefHeight="34.0" prefWidth="155.0" style="-fx-background-color: #fff;" stylesheets="@styles/styles.css" />
+                  <AreaChart fx:id="AcessosChart" layoutX="208.0" layoutY="49.0" prefHeight="380.0" prefWidth="382.0" stylesheets="@styles/styles.css">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis prefHeight="460.0" prefWidth="30.0" side="LEFT" />
+                    </yAxis>
+                  </AreaChart>
+               </children>
+            </AnchorPane>
+         </children></Pane>
+   </children>
+</AnchorPane>
