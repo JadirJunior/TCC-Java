@@ -58,13 +58,6 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     public void abrirCadastro(ActionEvent event) {
-        /*Cadastro prj = new Cadastro();
-        PrjTCC.getStageThis().close();
-         try {
-             prj.start(new Stage());
-         } catch (Exception ex) {
-             Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
-         }*/
         PrjTCC.changeScreen("cadastro");
     }
     
