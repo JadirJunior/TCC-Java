@@ -7,12 +7,22 @@ public class StaticKeys {
     private static String senha; 
     private static String id;
     private static BufferedImage foto;
+    private static boolean manter_conectado;
+
+    public static void setManter_conectado(boolean manter_conectado) {
+        StaticKeys.manter_conectado = manter_conectado;
+    }
+    
+    public static boolean getManter_conectado() {
+        return manter_conectado;
+    }
     
     public static void resetKeys() {
         StaticKeys.nome = "";
         StaticKeys.senha = "";
         StaticKeys.id = "";
         StaticKeys.foto = null;
+        StaticKeys.manter_conectado = false;
     }
     
     

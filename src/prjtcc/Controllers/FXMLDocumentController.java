@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -26,6 +27,9 @@ public class FXMLDocumentController implements Initializable {
     private AnchorPane anchPane;
     
     @FXML
+    private CheckBox check;
+    
+    @FXML
     private StackPane stack;
     
     @FXML
@@ -39,13 +43,27 @@ public class FXMLDocumentController implements Initializable {
      
     @FXML
     private Button btnClose;
-     
+    
+    LoginComands login = new LoginComands();
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        if (login.manterConectado()) {   
+            PrjTCC.changeScreen("principal", StaticKeys.getNome());
+            return;
+        }
         new ZoomIn(anchPane).play();
         PrjTCC.addOnChangeListeners(new PrjTCC.onChangeScreen() {
             @Override
             public void onScreenChanged(String newScreen, Object userData) {
+            if (login.manterConectado() && PrincipalController.loggout == false) {
+               if (check.isSelected()) {
+                    StaticKeys.setManter_conectado(true);
+                }
+            PrjTCC.changeScreen("principal", StaticKeys.getNome());
+            return;
+        }
                 if (newScreen.equals("login"))
                     new ZoomIn(anchPane).play();
                 
@@ -69,6 +87,10 @@ public class FXMLDocumentController implements Initializable {
         }
         boolean res = login.session(new Funcionario(txtUsuario.getText(), txtSenha.getText()));
        if (res) {
+           if (check.isSelected()) {
+                StaticKeys.setManter_conectado(true);
+                System.out.println("Alow");
+            }
            Dialog.showDialog("Login","Bem vindo, " + StaticKeys.getNome(), "Ok!", true, stack);
        } else {
            Dialog.showDialog("Login", "Usuário ou senha Incorretos!", "Ok!", false, stack);

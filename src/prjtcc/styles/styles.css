@@ -4,6 +4,14 @@
 -fx-background-radius: 20px;
 }
 
+.text-field {
+    -fx-border-radius: 20;
+    -fx-border: gone;
+    -fx-border-color: gray;
+    -fx-background-color: transparent;
+    -fx-border-width: 1 1 1 1;
+}
+
 .button:hover {
     -fx-opacity: 0.6;
     -fx-cursor: hand;

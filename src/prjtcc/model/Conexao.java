@@ -18,7 +18,7 @@ import javafx.scene.control.Alert;
  */
 public class Conexao {
     private String user = "sa";
-    private String senha = "123";
+    private String senha = "junior2003";
     private Connection conexao;
     
     String url = "jdbc:sqlserver://localhost\\\\MSSQLSERVER:1433;databaseName=DB_SITE;user="+user+";password="+senha+"";

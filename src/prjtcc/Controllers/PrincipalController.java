@@ -24,6 +24,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Line;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
@@ -47,9 +48,7 @@ public class PrincipalController implements Initializable {
 
     @FXML
     private Label lblNomeUsuario;
-
-    @FXML
-    private Pane Container;
+    
     
     @FXML
     private AnchorPane Account, PanelChartAcessos;
@@ -60,17 +59,25 @@ public class PrincipalController implements Initializable {
     @FXML
     private AreaChart<?, ?> AcessosChart;
     
-    
     @FXML
     private ChoiceBox<Object> choiceBox;
     
-    @FXML
     private AnchorPane anchPane;
     
     @FXML
     private StackPane stack;
     
+    public static boolean loggout = false;
+    
     private static File file = null;
+    @FXML
+    private Button btnProdutosVendidos;
+    @FXML
+    private Button btnUsuariosNovos;
+    @FXML
+    private Button btnProdutosAdicionados;
+    @FXML
+    private Button btnDialog;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -80,10 +87,20 @@ public class PrincipalController implements Initializable {
             @Override
             public void onScreenChanged(String newScreen, Object userData) {
                 if (newScreen.equals("principal")) {
-                    Account.setVisible(false);
+                    PrjTCC.getStageThis().setMaximized(true);
+                    Account.setVisible(true);
+                    Account.toFront();
                     PanelChartAcessos.setVisible(false);
                     lblNomeUsuario.setText(userData.toString());
-                    new ZoomIn(anchPane).play();
+                    new ZoomIn(Account).play();
+                    if (StaticKeys.getFoto() != null) {
+                        imageUpdate.setImage(renderImageReturn(StaticKeys.getFoto()));
+                    }
+      
+                    txtUsuario.setText(StaticKeys.getNome());
+                    txtSenha.setText(StaticKeys.getSenha());
+                    lblNomeUsuario.setText(StaticKeys.getNome());
+                    stack.toBack();
                 }
                     
                 if (StaticKeys.getFoto() == null) {
@@ -107,7 +124,7 @@ public class PrincipalController implements Initializable {
         new ZoomOut(Account).play();
         Account.toBack();
         Account.setVisible(false);
-        new ZoomIn(PanelChartAcessos).play();
+        new ZoomInDown(PanelChartAcessos).play();
         PanelChartAcessos.setVisible(true);
         AcessosChart.getData().clear();
         new ChartModel(legend, title, chart, choice, data);
@@ -133,7 +150,7 @@ public class PrincipalController implements Initializable {
        if (Account.visibleProperty().equals(true)) {
            return;
        }
-       
+       stack.toBack();
       new ZoomOut(PanelChartAcessos).play();
       PanelChartAcessos.toBack();
       new ZoomIn(Account).play();
@@ -258,7 +275,10 @@ public class PrincipalController implements Initializable {
     @FXML
     public void onLoggout(ActionEvent event) {
         StaticKeys.resetKeys();
-        new ZoomOut(anchPane).play();
+        loggout = true;
+        PrjTCC.principal = false;
+        PrjTCC.getStageThis().setMaximized(false);
+        //new ZoomOut(anchPane).play();
         PrjTCC.changeScreen("login");
     }
     

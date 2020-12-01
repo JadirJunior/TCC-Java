@@ -16,6 +16,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import animatefx.animation.*;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import prjtcc.Controllers.PrincipalController;
+import prjtcc.classes.StaticKeys;
+import prjtcc.model.LoginComands;
 
 /**
  *
@@ -27,6 +34,7 @@ public class PrjTCC extends Application {
     private static Scene PrincipalScene;
     private static Scene LoginScene;
     private static Scene SignScene;
+    public static boolean principal = false;
     private double xOffSet = 0;
     private double yOffSet = 0;
     
@@ -35,12 +43,12 @@ public class PrjTCC extends Application {
         Parent login = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         LoginScene  = new Scene(login);
         
-       Parent Principal = FXMLLoader.load(getClass().getResource("FXMLPrincipal.fxml"));
+       Parent Principal = FXMLLoader.load(getClass().getResource("PrincipalFXML.fxml"));
        PrincipalScene = new Scene(Principal);
        
        Parent Cadastro = FXMLLoader.load(getClass().getResource("FXMLCadastro.fxml"));
        SignScene = new Scene(Cadastro);
-        
+       
         stage.initStyle(StageStyle.DECORATED.UNDECORATED);
         
         login.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -69,13 +77,18 @@ public class PrjTCC extends Application {
             }
         });
         
-        Principal.setOnMouseDragged(new EventHandler<MouseEvent>() {
-        @Override
-        public void handle(MouseEvent event) {
-            stage.setX(event.getScreenX()-xOffSet);
-            stage.setY(event.getScreenY()-yOffSet);
-        }
-    });
+        stage.setOnCloseRequest((event) -> {
+            if (principal) {
+                if (StaticKeys.getManter_conectado() && PrincipalController.loggout == false) {
+                    try {
+                        System.out.println("opa");
+                        new LoginComands().insertConnect(InetAddress.getLocalHost().getHostName(), Integer.parseInt(StaticKeys.getId()));
+                    } catch (UnknownHostException ex) {
+                        Logger.getLogger(PrjTCC.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        });
         
         stage.setScene(LoginScene);
         stage.show();
@@ -93,16 +106,19 @@ public class PrjTCC extends Application {
     public static void changeScreen(String src, Object userData) {
         switch (src) {
             case "login": 
+                principal = false;
                 stageThis.setScene(LoginScene);
                 notifyAllListeners(src, userData);
                 break;
                 
             case "principal":
+                principal = true;
                 stageThis.setScene(PrincipalScene);
                 notifyAllListeners(src, userData);
                 break;
                 
             case "cadastro":
+                principal = false;
                 stageThis.setScene(SignScene);
                 notifyAllListeners(src, userData);
                 break;
@@ -111,17 +127,20 @@ public class PrjTCC extends Application {
     
     public static void changeScreen(String src) {
         switch (src) {
-            case "login": 
+            case "login":
+                principal = false;
                 stageThis.setScene(LoginScene);
                 notifyAllListeners(src, null);
                 break;
                 
             case "principal":
+                principal = true;
                 stageThis.setScene(PrincipalScene);
                 notifyAllListeners(src, null);
                 break;
                 
             case "cadastro":
+                principal = false;
                 stageThis.setScene(SignScene);
                 notifyAllListeners(src, null);
                 break;

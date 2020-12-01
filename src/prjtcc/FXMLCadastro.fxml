@@ -29,28 +29,28 @@
                         <Image url="@assets/Logo1.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="37.0" layoutY="165.0" style="-fx-background-color: #fff; -fx-font-size: 30;" text="CADASTRAR" />
+                  <Label layoutX="90.0" layoutY="180.0" style="-fx-background-color: #fff; -fx-font-size: 20;" text="CADASTRAR" />
                   <Button fx:id="btnClose" layoutX="474.0" layoutY="5.0" mnemonicParsing="false" onAction="#btnClose" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent;">
                      <graphic>
-                        <FontAwesomeIconView fill="#c86ee7" glyphName="CLOSE" size="17" />
+                        <FontAwesomeIconView fill="#a8a8a8" glyphName="CLOSE" size="17" />
                      </graphic>
                   </Button>
                </children>
             </Pane>
          </top>
          <center>
-            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <Pane prefHeight="326.0" prefWidth="519.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField id="text-field" fx:id="txtUsuario" layoutX="112.0" layoutY="61.0" prefHeight="38.0" prefWidth="293.0" promptText="Usuário" style="-fx-font-family: Montserrat;" stylesheets="@styles/styles.css">
+                  <TextField id="text-field" fx:id="txtUsuario" layoutX="86.0" layoutY="27.0" prefHeight="38.0" prefWidth="345.0" promptText="Usuário" style="-fx-font-family: Montserrat;" stylesheets="@styles/styles.css">
                      <styleClass>
                         <String fx:value="text-field" />
                         <String fx:value="text-field" />
                      </styleClass>
                   </TextField>
-                  <PasswordField fx:id="txtSenha" layoutX="110.0" layoutY="121.0" prefHeight="40.0" prefWidth="295.0" promptText="Senha" style="-fx-font-family: Montserrat;" />
-                  <Button fx:id="btnCadastrar" layoutX="152.0" layoutY="287.0" mnemonicParsing="false" onAction="#cadastrarUsuario" prefHeight="36.0" prefWidth="212.0" stylesheets="@styles/styles.css" text="CADASTRAR" />
-                  <Hyperlink fx:id="btnVoltar" layoutX="235.0" layoutY="333.0" style="-fx-font-size: 15;" stylesheets="@styles/styles.css" text="Voltar" />
-                  <PasswordField fx:id="txtSenhaConf" layoutX="110.0" layoutY="188.0" prefHeight="40.0" prefWidth="295.0" promptText="Confirmar Senha" style="-fx-font-family: Montserrat;" />
+                  <PasswordField fx:id="txtSenha" layoutX="86.0" layoutY="85.0" prefHeight="40.0" prefWidth="344.0" promptText="Senha" style="-fx-font-family: Montserrat;" stylesheets="@styles/styles.css" />
+                  <Button fx:id="btnCadastrar" layoutX="86.0" layoutY="228.0" mnemonicParsing="false" onAction="#cadastrarUsuario" prefHeight="36.0" prefWidth="344.0" stylesheets="@styles/styles.css" text="CADASTRAR" />
+                  <Hyperlink fx:id="btnVoltar" layoutX="233.0" layoutY="297.0" style="-fx-font-size: 15;" stylesheets="@styles/styles.css" text="Voltar" />
+                  <PasswordField fx:id="txtSenhaConf" layoutX="86.0" layoutY="147.0" prefHeight="40.0" prefWidth="345.0" promptText="Confirmar Senha" style="-fx-font-family: Montserrat;" stylesheets="@styles/styles.css" />
                </children>
             </Pane>
          </center>

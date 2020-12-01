@@ -6,6 +6,7 @@
 package prjtcc.model;
 
 import java.io.IOException;
+import java.net.InetAddress;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -141,7 +142,7 @@ public class LoginComands {
         } 
     
     public boolean updateUser(Funcionario func) {
-        String usuario = validaConta(func.getNome()); //Ainda fazer verifiação 
+        String usuario = validaConta(func.getNome()); 
         if (usuario.equalsIgnoreCase(func.getNome()) && (!usuario.equals(StaticKeys.getNome()))) {
             return false;
         }
@@ -167,8 +168,78 @@ public class LoginComands {
            alert();
             return false;
         }
-        
-        
         }
     
+    public boolean manterConectado() {
+        con = new Conexao();
+        ResultSet response = null;
+        try {
+            String query = "select * from conectado where Machine_Name = ?";
+            PreparedStatement pst = con.getConexao().prepareStatement(query);
+            pst.setString(1, InetAddress.getLocalHost().getHostName());
+            response = pst.executeQuery();
+            System.out.println(response.getString("machine_name"));
+            String machine_name = response.getString("machine_name");
+            System.out.println(machine_name);
+            session(getFuncById(response.getInt("id_func")));
+            Erro = false;
+            con.desconectar();
+           return true;
+        } catch (Exception e) {
+            Erro = true;
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    private Funcionario getFuncById(int id) {
+        con = new Conexao();
+        ResultSet response = null;
+        try {
+            String query = "select * from funcionarios where id_func = ?";
+            PreparedStatement pst = con.getConexao().prepareStatement(query);
+            pst.setInt(1, id);
+            response = pst.executeQuery();
+            con.desconectar();
+            if (response.next()) {
+                Erro = false;
+                return new Funcionario(response.getString("nome_func"), response.getString("senha_func"));
+            }
+        } catch (Exception e) {
+            Erro = true;
+            e.printStackTrace();
+            return new Funcionario("", "");
+        }
+        return new Funcionario("", "");
+    }
+    
+    public void deleteConnects(String MachineName) {
+        con = new Conexao();
+        try {
+            String query = "delete from conectado where machine_name = ?";
+            PreparedStatement pst = con.getConexao().prepareStatement(query);
+            pst.setString(1, MachineName);
+            pst.execute();
+            con.desconectar();
+            pst.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
+    }
+    
+    public void insertConnect(String MachineName, int id) {
+        deleteConnects(MachineName);
+        con = new Conexao();
+        try {
+            String query = "insert into conectado (id_func, manter_conectado, machine_name) values (?, 1, ?)";
+            PreparedStatement pst = con.getConexao().prepareStatement(query);
+            pst.setInt(1, id);
+            pst.setString(2, MachineName);
+            pst.execute();
+            pst.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
