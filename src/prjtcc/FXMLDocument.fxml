@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+
+<AnchorPane id="AnchorPane" fx:id="anchPane" prefHeight="618.0" prefWidth="519.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prjtcc.Controllers.FXMLDocumentController">
+   <children>
+      <StackPane fx:id="stack" prefHeight="680.0" prefWidth="519.0" />
+      <BorderPane prefHeight="680.0" prefWidth="519.0" style="-fx-background-color: #fff;">
+         <top>
+            <Pane prefHeight="241.0" prefWidth="519.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="135.0" fitWidth="218.0" layoutX="138.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@assets/Logo1.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="97.0" layoutY="205.0" style="-fx-background-color: #fff; -fx-font-size: 20;" text="ACESSAR" />
+                  <Button fx:id="btnClose" layoutX="474.0" layoutY="6.0" mnemonicParsing="false" onAction="#btnClose" prefHeight="35.0" prefWidth="38.0" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <FontAwesomeIconView fill="#a8a8a8" glyphName="CLOSE" size="17" />
+                     </graphic>
+                  </Button>
+               </children>
+            </Pane>
+         </top>
+         <center>
+            <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TextField fx:id="txtUsuario" layoutX="93.0" layoutY="37.0" prefHeight="38.0" prefWidth="337.0" promptText="Usuário" style="-fx-font-family: Montserrat;" stylesheets="@styles/styles.css" />
+                  <PasswordField fx:id="txtSenha" layoutX="94.0" layoutY="108.0" prefHeight="40.0" prefWidth="334.0" promptText="Senha" style="-fx-font-family: Montserrat;" stylesheets="@styles/styles.css" />
+                  <Button fx:id="btnAcessar" layoutX="92.0" layoutY="184.0" mnemonicParsing="false" onAction="#btnLogin" prefHeight="36.0" prefWidth="337.0" stylesheets="@styles/styles.css" text="ACESSAR" />
+                  <Line endX="201.0" layoutX="202.0" layoutY="265.0" startX="-100.0" />
+                  <Label layoutX="112.0" layoutY="304.0" style="-fx-font-size: 15;" text="Não possui uma conta?" />
+                  <Hyperlink fx:id="btnCadastro" layoutX="274.0" layoutY="300.0" onAction="#abrirCadastro" style="-fx-font-size: 15;" stylesheets="@styles/styles.css" text="Cadastre-se aqui" />
+                  <FontAwesomeIconView fill="#a8a8a8" glyphName="USER" layoutX="395.0" layoutY="64.0" size="25" />
+                  <FontAwesomeIconView fill="#a8a8a8" glyphName="KEY" layoutX="392.0" layoutY="136.0" size="25" />
+               </children>
+            </Pane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

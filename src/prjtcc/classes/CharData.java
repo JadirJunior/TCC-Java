@@ -1,0 +1,5 @@
+package prjtcc.classes;
+
+public enum CharData {
+    PRODUTOS_ADICIONADOS, PRODUTOS_VENDIDOS, ACESSOS, USUARIOS_CADASTRADOS
+}
